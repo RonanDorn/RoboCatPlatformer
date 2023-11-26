@@ -1,0 +1,7 @@
+res://character/player.tscn
+res://character/player.gd
+res://resources/PlayerMovementData.gd
+res://resources/PlayerMovement.tres
+res://scenes/test_level.tscn
+res://global/Skills.gd
+res://Thorn.gd
