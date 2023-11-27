@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://i2lb2j7ty8ul"]
+[gd_scene load_steps=76 format=3 uid="uid://i2lb2j7ty8ul"]
 
 [ext_resource type="Script" path="res://character/player.gd" id="1_3q1yg"]
 [ext_resource type="Texture2D" uid="uid://3malhwtluu4s" path="res://character/Character16x16_Blink.png" id="1_5gymm"]
@@ -233,18 +233,6 @@ region = Rect2(64, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ans3b"]
 atlas = ExtResource("7_t5ogr")
 region = Rect2(80, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v6sxl"]
-atlas = ExtResource("8_lndvq")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mtbxl"]
-atlas = ExtResource("8_lndvq")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8x8pw"]
-atlas = ExtResource("8_lndvq")
-region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5qhem"]
 atlas = ExtResource("8_lndvq")
@@ -485,15 +473,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v6sxl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mtbxl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8x8pw")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_5qhem")
 }, {
 "duration": 1.0,
@@ -532,7 +511,7 @@ script = ExtResource("1_3q1yg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_drss8")
-animation = &"idle"
+animation = &"wallSlide"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -6)
@@ -552,19 +531,10 @@ one_shot = true
 wait_time = 5.0
 one_shot = true
 
-[node name="WallSlideTimer" type="Timer" parent="Timers"]
-one_shot = true
-
-[node name="SlidingTimer" type="Timer" parent="Timers"]
-wait_time = 0.5
-one_shot = true
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_left_margin = 0.1
-drag_top_margin = 0.1
 drag_right_margin = 0.1
-drag_bottom_margin = 0.1
