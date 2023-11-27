@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c31mgrnids1sq"]
+
+[ext_resource type="Texture2D" uid="uid://gftclf3ge5jk" path="res://assets/Thorn.png" id="1_qptr3"]
+[ext_resource type="PackedScene" uid="uid://bb2fq71al57wx" path="res://objects/hit_box.tscn" id="2_prstv"]
+
+[node name="Thorn" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qptr3")
+
+[node name="HitBox" parent="." instance=ExtResource("2_prstv")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitBox"]
+polygon = PackedVector2Array(-3, 8, 0, 2, 1, 2, 4, 8)

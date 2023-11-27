@@ -6,20 +6,38 @@ enum STATE { MOVEMENT, JUMP, WALLSLIDE, DEATH }
 @onready var jump_buffer		 = $Timers/JumpBuffer
 @onready var wall_slide_timer	 = $Timers/WallSlideTimer
 @onready var sliding_timer		 = $Timers/SlidingTimer
+@onready var checkpoint = self.position
 
 @onready var anim				 = $AnimatedSprite2D
-@export var jump_impulse = -350
-@export var m : Resource
+
+@export var speed = 150
+@export var acceleration = 400
+@export var friction = 900
+@export var jump_short_impulse = -250
+@export var jump_impulse = -250
+@export var air_acceleration = 300
+@export var air_resistance = 900
+@export var terminal_gravity = 1450
+@export var extra_gravity = 150
+@export var slide_speed = 400
+@export var slide_acceleration = 50
+@export var wall_jump_impulse = Vector2(45, -250)
+
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var direction
 var current_state = STATE.MOVEMENT
 
 var has_second_jump		 = true
 var has_sliding			 = true
-var is_jumping
+var is_jumping = false
 var is_short_jump
 var was_on_floor
 
+func _ready():
+	GlobalEvents.enter_in_hit_box.connect(hit_box)
+	GlobalEvents.new_checkpoint.connect(checkpoint_update)
+	
 func _physics_process(delta):
 	direction = Input.get_axis("left", "right")
 	state_update(delta)
@@ -27,9 +45,10 @@ func _physics_process(delta):
 		has_sliding = true
 	
 	was_on_floor = is_on_floor()
+	
 	move_and_slide()
 	
-	if !is_on_floor() and was_on_floor and !is_jumping:
+	if was_on_floor and !is_on_floor():
 		coyote_timer.start()
 	
 func state_update(delta):
@@ -44,13 +63,13 @@ func movement(delta):
 		
 		if jump_buffer.time_left > 0 and !is_short_jump:
 			is_jumping = true
-			velocity.y = m.jump_impulse
+			velocity.y = jump_impulse
 		
 		has_second_jump = true
 		is_short_jump = false
 		
 		if direction != 0:
-			velocity.x = move_toward(velocity.x, m.speed * direction, m.acceleration * delta)
+			velocity.x = move_toward(velocity.x, speed * direction, acceleration * delta)
 			anim.play("walk")
 			if direction < 0:
 				anim.flip_h = true
@@ -58,12 +77,19 @@ func movement(delta):
 				anim.flip_h = false
 		elif direction == 0:
 			anim.play("idle")
-			velocity.x = move_toward(velocity.x, 0, m.friction * delta)
+			velocity.x = move_toward(velocity.x, 0, friction * delta)
 			
-		if Input.is_action_just_pressed("jump"):
+		if Input.is_action_just_pressed("jump") and GameData.high_jump:
 			anim.play("jump")
 			is_jumping = true
 			velocity.y = jump_impulse
+			current_state = STATE.JUMP
+		
+		elif Input.is_action_just_pressed("jump") and !GameData.high_jump:
+			anim.play("jump")
+			is_jumping = true
+			is_short_jump = true
+			velocity.y = jump_short_impulse
 			current_state = STATE.JUMP
 			
 	elif !is_on_floor() and coyote_timer.time_left == 0:
@@ -73,22 +99,22 @@ func movement(delta):
 func jump(delta):
 	if !is_on_floor():
 		
-		if Input.is_action_just_released("jump") and !is_on_floor() and velocity.y < m.jump_short_impulse:
+		if Input.is_action_just_released("jump") and !is_on_floor() and velocity.y < jump_short_impulse:
 			anim.play("jump")
 			is_jumping = true
 			is_short_jump = true
-			velocity.y = m.jump_short_impulse
+			velocity.y = jump_short_impulse
 			
-		velocity.y += min(m.gravity * delta, m.terminal_gravity)
+		velocity.y += min(gravity * delta, terminal_gravity)
 		
 		if direction != 0:
-			velocity.x = move_toward(velocity.x, m.speed * direction, m.air_acceleration * delta)
+			velocity.x = move_toward(velocity.x, speed * direction, air_acceleration * delta)
 		elif direction == 0:
-			velocity.x = move_toward(velocity.x, 0, m.air_resistance * delta)
+			velocity.x = move_toward(velocity.x, 0, air_resistance * delta)
 		
-		if Input.is_action_just_pressed("jump") and has_second_jump:
+		if Input.is_action_just_pressed("jump") and has_second_jump and GameData.double_jump:
 			anim.play("jump")
-			velocity.y = m.jump_impulse
+			velocity.y = jump_impulse
 			has_second_jump = false
 			
 		elif Input.is_action_just_pressed("jump") and !has_second_jump:
@@ -97,8 +123,8 @@ func jump(delta):
 		if velocity.y > -60:
 			anim.play("fall")		
 		
-		if velocity.y > m.gravity / 2:
-			velocity.y += (m.gravity + m.extra_gravity) * delta
+		if velocity.y > gravity / 2:
+			velocity.y += (gravity + extra_gravity) * delta
 			
 		if is_on_wall() and has_sliding and wall_slide_timer.time_left == 0 and velocity.y > 0:
 			sliding_timer.start()
@@ -118,11 +144,11 @@ func wallslide(delta):
 			anim.flip_h = false
 		
 		velocity.x = 0
-		velocity.y = move_toward(0, m.slide_speed, m.slide_acceleration)
+		velocity.y = move_toward(0, slide_speed, slide_acceleration)
 		
-		if Input.is_action_just_pressed("jump") and direction == get_wall_normal().x:
-			velocity.x = m.wall_jump_impulse.x * direction
-			velocity.y = m.wall_jump_impulse.y
+		if Input.is_action_just_pressed("jump") and direction == get_wall_normal().x and GameData.wall_jump:
+			velocity.x = wall_jump_impulse.x * direction
+			velocity.y = wall_jump_impulse.y
 			anim.play("wallJump")
 			current_state = STATE.JUMP
 			
@@ -140,4 +166,12 @@ func wallslide(delta):
 	
 func death():
 	anim.play("death")
-	pass
+	await anim.animation_finished
+	self.global_position = checkpoint
+	current_state = STATE.MOVEMENT
+
+func hit_box():
+	current_state = STATE.DEATH
+
+func checkpoint_update(checkpoint_position):
+	checkpoint = checkpoint_position

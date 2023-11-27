@@ -1,9 +1,8 @@
-[gd_scene load_steps=80 format=3 uid="uid://i2lb2j7ty8ul"]
+[gd_scene load_steps=79 format=3 uid="uid://i2lb2j7ty8ul"]
 
 [ext_resource type="Script" path="res://character/player.gd" id="1_3q1yg"]
 [ext_resource type="Texture2D" uid="uid://3malhwtluu4s" path="res://character/Character16x16_Blink.png" id="1_5gymm"]
 [ext_resource type="Texture2D" uid="uid://7qg4sa7prv88" path="res://character/Character16x16_Death.png" id="2_1m7l4"]
-[ext_resource type="Resource" uid="uid://cbv62433cn8qb" path="res://resources/PlayerMovement.tres" id="2_e87s5"]
 [ext_resource type="Texture2D" uid="uid://m5mqiglrpo4e" path="res://character/Character16x16_Fall.png" id="3_4fuhi"]
 [ext_resource type="Texture2D" uid="uid://cy8vgnhxhhvn1" path="res://character/Character16x16_Idle.png" id="4_tf8qk"]
 [ext_resource type="Texture2D" uid="uid://rokrcvcmcjw2" path="res://character/Character16x16_Jump.png" id="5_8pw07"]
@@ -529,7 +528,6 @@ size = Vector2(7, 12)
 [node name="Player" type="CharacterBody2D"]
 safe_margin = 0.1
 script = ExtResource("1_3q1yg")
-m = ExtResource("2_e87s5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
@@ -543,7 +541,7 @@ shape = SubResource("RectangleShape2D_vt7ge")
 [node name="Timers" type="Node" parent="."]
 
 [node name="CoyoteTimer" type="Timer" parent="Timers"]
-wait_time = 0.1
+wait_time = 0.15
 one_shot = true
 
 [node name="JumpBuffer" type="Timer" parent="Timers"]

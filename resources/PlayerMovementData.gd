@@ -4,8 +4,8 @@ class_name PlayerMovement
 @export var speed = 200
 @export var acceleration = 650
 @export var friction = 1200
-@export var jump_short_impulse = -100
-@export var jump_impulse = -350
+@export var jump_short_impulse = -250
+@export var jump_impulse = -250
 @export var air_acceleration = 500
 @export var air_resistance = 1000
 @export var terminal_gravity = 1450

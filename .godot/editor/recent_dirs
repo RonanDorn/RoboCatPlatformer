@@ -1,4 +1,9 @@
-res://resources
-res://global
-res://character
 res://scenes
+res://
+res://objects
+res://objects/Thorn
+res://global
+res://objects/coin
+res://assets
+res://resources
+res://character

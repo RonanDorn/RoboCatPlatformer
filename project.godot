@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="RoboCatPlatformer"
-run/main_scene="res://scenes/test_level.tscn"
+run/main_scene="res://scenes/1_level.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GlobalEvents="*res://global/GlobalEvents.gd"
+GameData="*res://global/GameData.gd"
 
 [display]
 
