@@ -1,34 +1,33 @@
 extends CharacterBody2D
 
 enum STATE { MOVEMENT, JUMP, WALLSLIDE, DEATH }
-
-@onready var coyote_timer		 = $Timers/CoyoteTimer
-@onready var jump_buffer		 = $Timers/JumpBuffer
-@onready var anim				 = $AnimatedSprite2D
-
-@onready var checkpoint			 = self.position
-
-@export var speed				 = 150
-@export var acceleration		 = 400
-@export var friction			 = 900
-@export var jump_short_impulse	 = -250
-@export var jump_impulse		 = -250
-@export var air_acceleration	 = 300
-@export var air_resistance		 = 700
-@export var terminal_gravity	 = 1200
-@export var extra_gravity		 = 150
-@export var slide_speed			 = 400
-@export var slide_acceleration	 = 50
-@export var wall_jump_impulse	 = Vector2(45, -250)
-
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
-var direction
 var current_state = STATE.MOVEMENT
 
-var has_second_jump		 = true
-var is_short_jump
-var was_on_floor
+@onready var coyote_timer		: Timer				 = $Timers/CoyoteTimer
+@onready var jump_buffer		: Timer				 = $Timers/JumpBuffer
+@onready var anim				: AnimatedSprite2D	 = $AnimatedSprite2D
+
+@onready var checkpoint			: Vector2			 = self.position
+
+@export var speed				: int		 = 150
+@export var acceleration		: int		 = 400
+@export var friction			: int		 = 900
+@export var jump_short_impulse	: int		 = -250
+@export var jump_impulse		: int		 = -250
+@export var air_acceleration	: int		 = 300
+@export var air_resistance		: int		 = 700
+@export var terminal_gravity	: int		 = 1200
+@export var extra_gravity		: int		 = 150
+@export var slide_speed			: int		 = 400
+@export var slide_acceleration	: int		 = 50
+@export var wall_jump_impulse	: Vector2	 = Vector2(45, -250)
+
+var gravity						: int		 = ProjectSettings.get_setting("physics/2d/default_gravity")
+var direction					: int
+
+var has_second_jump				: bool		 = true
+var is_short_jump				: bool
+var was_on_floor				: bool
 
 func _ready():
 	GlobalEvents.enter_in_hit_box.connect(hit_box)
@@ -49,7 +48,7 @@ func state_update(delta):
 	match current_state:
 		STATE.MOVEMENT : movement(delta)
 		STATE.JUMP : jump(delta)
-		STATE.WALLSLIDE : wallslide(delta)
+		STATE.WALLSLIDE : wallslide()
 		STATE.DEATH : death()
 		
 func movement(delta):
@@ -72,12 +71,12 @@ func movement(delta):
 			anim.play("idle")
 			velocity.x = move_toward(velocity.x, 0, friction * delta)
 			
-		if Input.is_action_just_pressed("jump") and GameData.high_jump:
+		if Input.is_action_just_pressed("jump") and GameData.skills.high_jump:
 			anim.play("jump")
 			velocity.y = jump_impulse
 			current_state = STATE.JUMP
 		
-		elif Input.is_action_just_pressed("jump") and !GameData.high_jump:
+		elif Input.is_action_just_pressed("jump") and !GameData.skills.high_jump:
 			anim.play("jump")
 			is_short_jump = true
 			velocity.y = jump_short_impulse
@@ -101,7 +100,7 @@ func jump(delta):
 		elif direction == 0:
 			velocity.x = move_toward(velocity.x, 0, air_resistance * delta)
 		
-		if Input.is_action_just_pressed("jump") and has_second_jump and GameData.double_jump:
+		if Input.is_action_just_pressed("jump") and has_second_jump and GameData.skills.double_jump:
 			anim.play("jump")
 			velocity.y = jump_impulse
 			has_second_jump = false
@@ -124,7 +123,7 @@ func jump(delta):
 	elif is_on_floor():
 		current_state = STATE.MOVEMENT
 
-func wallslide(delta):
+func wallslide():
 	if !is_on_floor() and is_on_wall() and direction != get_wall_normal().x:
 		
 		anim.play("wallSlide")
@@ -160,3 +159,4 @@ func hit_box():
 func checkpoint_update(checkpoint_position):
 	if checkpoint !=checkpoint_position:
 		checkpoint = checkpoint_position
+		GlobalEvents.show_checkpoint_label.emit()

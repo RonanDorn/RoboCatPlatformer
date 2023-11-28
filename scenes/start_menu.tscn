@@ -1,0 +1,79 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4xx1wpxyv7af"]
+
+[ext_resource type="Script" path="res://scenes/start_menu.gd" id="1_3le3f"]
+
+[node name="StartMenu" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+script = ExtResource("1_3le3f")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="LevelsSelection" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Level1" type="Button" parent="CenterContainer/VBoxContainer/LevelsSelection"]
+layout_mode = 2
+text = "Level 1"
+
+[node name="Level2" type="Button" parent="CenterContainer/VBoxContainer/LevelsSelection"]
+layout_mode = 2
+text = "Level 2"
+
+[node name="Level3" type="Button" parent="CenterContainer/VBoxContainer/LevelsSelection"]
+layout_mode = 2
+text = "Level 3"
+
+[node name="LevelsSelection2" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Level4" type="Button" parent="CenterContainer/VBoxContainer/LevelsSelection2"]
+layout_mode = 2
+text = "Level 4"
+
+[node name="Level5" type="Button" parent="CenterContainer/VBoxContainer/LevelsSelection2"]
+layout_mode = 2
+text = "Level 5"
+
+[node name="Level6" type="Button" parent="CenterContainer/VBoxContainer/LevelsSelection2"]
+layout_mode = 2
+text = "Level 6"
+
+[node name="LevelsSelection3" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Level7" type="Button" parent="CenterContainer/VBoxContainer/LevelsSelection3"]
+layout_mode = 2
+text = "Level 7"
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer/LevelsSelection3"]
+layout_mode = 2
+theme_override_constants/margin_left = 66
+
+[node name="Level8" type="Button" parent="CenterContainer/VBoxContainer/LevelsSelection3/MarginContainer"]
+layout_mode = 2
+text = "Level 8"
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 65
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 65
+
+[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/LevelsSelection/Level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/MarginContainer/QuitButton" to="." method="_on_quit_button_pressed"]

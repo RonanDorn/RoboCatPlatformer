@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://i2lb2j7ty8ul"]
+[gd_scene load_steps=77 format=3 uid="uid://i2lb2j7ty8ul"]
 
 [ext_resource type="Script" path="res://character/player.gd" id="1_3q1yg"]
 [ext_resource type="Texture2D" uid="uid://3malhwtluu4s" path="res://character/Character16x16_Blink.png" id="1_5gymm"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://clm7awga4qg7s" path="res://character/Character16x16_Walk.png" id="6_u8lts"]
 [ext_resource type="Texture2D" uid="uid://26l0tg2cv42g" path="res://character/Character16x16_WallJump.png" id="7_t5ogr"]
 [ext_resource type="Texture2D" uid="uid://r1klcavwmxtq" path="res://character/Character16x16_WallSlide.png" id="8_lndvq"]
+[ext_resource type="PackedScene" uid="uid://gltyefmw861d" path="res://score.tscn" id="10_eikmi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jkn5y"]
 atlas = ExtResource("1_5gymm")
@@ -511,7 +512,7 @@ script = ExtResource("1_3q1yg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_drss8")
-animation = &"wallSlide"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -6)
@@ -538,3 +539,5 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_left_margin = 0.1
 drag_right_margin = 0.1
+
+[node name="Score" parent="." instance=ExtResource("10_eikmi")]

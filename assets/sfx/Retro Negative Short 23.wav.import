@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bxv8yy5sou122"
+path="res://.godot/imported/Retro Negative Short 23.wav-b66dd3e3dcbcd8ac86d0089206b93213.sample"
+
+[deps]
+
+source_file="res://assets/sfx/Retro Negative Short 23.wav"
+dest_files=["res://.godot/imported/Retro Negative Short 23.wav-b66dd3e3dcbcd8ac86d0089206b93213.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
