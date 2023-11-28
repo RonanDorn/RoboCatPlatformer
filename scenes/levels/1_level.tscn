@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3c0562d8po33"]
+[gd_scene load_steps=8 format=3 uid="uid://b3c0562d8po33"]
 
 [ext_resource type="Script" path="res://scenes/level.gd" id="1_e1uxy"]
 [ext_resource type="PackedScene" uid="uid://c6rx0kmadyj10" path="res://TileMap.tscn" id="2_jtrc3"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cnynuade816p6" path="res://objects/coin/coin.tscn" id="4_jl26u"]
 [ext_resource type="PackedScene" uid="uid://c31mgrnids1sq" path="res://objects/Thorn/thorn.tscn" id="5_g770w"]
 [ext_resource type="PackedScene" uid="uid://deuhpxjufyiw3" path="res://objects/check_point.tscn" id="6_t78op"]
+[ext_resource type="PackedScene" uid="uid://bvwvreynqv2eu" path="res://objects/level_exit.tscn" id="7_ixcpm"]
 
 [node name="1Level" type="Node2D"]
 script = ExtResource("1_e1uxy")
@@ -442,3 +443,6 @@ position = Vector2(210, 160)
 
 [node name="CheckPoint2" parent="." instance=ExtResource("6_t78op")]
 position = Vector2(732, 162)
+
+[node name="LevelExit" parent="." instance=ExtResource("7_ixcpm")]
+position = Vector2(808, -39)

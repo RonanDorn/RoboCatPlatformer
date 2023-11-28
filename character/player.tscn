@@ -506,6 +506,7 @@ animations = [{
 size = Vector2(7, 12)
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
 safe_margin = 0.1
 script = ExtResource("1_3q1yg")
 
@@ -515,6 +516,7 @@ sprite_frames = SubResource("SpriteFrames_drss8")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 2
 position = Vector2(0.5, -6)
 shape = SubResource("RectangleShape2D_vt7ge")
 

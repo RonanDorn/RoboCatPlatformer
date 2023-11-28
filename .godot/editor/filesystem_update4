@@ -24,3 +24,7 @@ res://score.gd
 res://sound_player.tscn
 res://sound_player.gd
 res://objects/hit_box.gd
+res://mobs/BoxBot/box_bot.tscn
+res://mobs/BoxBot/box_bot.gd
+res://objects/cheap.tscn
+res://objects/cheap.gd

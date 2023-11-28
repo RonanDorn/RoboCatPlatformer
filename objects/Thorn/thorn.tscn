@@ -9,6 +9,8 @@
 texture = ExtResource("1_qptr3")
 
 [node name="HitBox" parent="." instance=ExtResource("2_prstv")]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitBox"]
 polygon = PackedVector2Array(-3, 8, 0, 2, 1, 2, 4, 8)

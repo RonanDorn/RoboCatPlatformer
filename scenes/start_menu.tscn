@@ -76,4 +76,6 @@ layout_mode = 2
 text = "Quit"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/LevelsSelection/Level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/LevelsSelection/Level2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/LevelsSelection3/MarginContainer/Level8" to="." method="_on_level_8_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/MarginContainer/QuitButton" to="." method="_on_quit_button_pressed"]

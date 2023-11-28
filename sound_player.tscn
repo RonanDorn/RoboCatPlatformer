@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bs3eott5d5f1u"]
+[gd_scene load_steps=7 format=3 uid="uid://bs3eott5d5f1u"]
 
 [ext_resource type="Script" path="res://sound_player.gd" id="1_ryf1l"]
 [ext_resource type="AudioStream" uid="uid://nod7vg4bxm0w" path="res://assets/sfx/Retro PickUp 18.wav" id="2_38rqa"]
 [ext_resource type="AudioStream" uid="uid://dns1fve0kods3" path="res://assets/sfx/Retro PowerUP 09.wav" id="3_fny3l"]
 [ext_resource type="AudioStream" uid="uid://bxv8yy5sou122" path="res://assets/sfx/Retro Negative Short 23.wav" id="4_yh0r0"]
 [ext_resource type="AudioStream" uid="uid://dttpxbrjcwqpo" path="res://assets/music/DOS-88 - Far away.mp3" id="5_8vj2s"]
+[ext_resource type="AudioStream" uid="uid://bw443uk6nil8s" path="res://assets/sfx/Cheap.wav" id="5_xoxgt"]
 
 [node name="SoundPlayer" type="Node"]
 script = ExtResource("1_ryf1l")
@@ -25,6 +26,11 @@ pitch_scale = 1.22
 stream = ExtResource("4_yh0r0")
 volume_db = -30.306
 pitch_scale = 1.22
+
+[node name="CheapPickUp" type="AudioStreamPlayer" parent="AudioPlayers"]
+stream = ExtResource("5_xoxgt")
+volume_db = 6.305
+pitch_scale = 3.06
 
 [node name="MusicPlayers" type="Node" parent="."]
 
