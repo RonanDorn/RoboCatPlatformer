@@ -1,0 +1,86 @@
+[gd_scene load_steps=4 format=3 uid="uid://dehqq743o3pip"]
+
+[ext_resource type="Texture2D" uid="uid://dlm6wvw7cuxbr" path="res://assets/BG/BG_L1.png" id="1_ilfs8"]
+[ext_resource type="Script" path="res://parallax_bg.gd" id="1_y4y3k"]
+[ext_resource type="Texture2D" uid="uid://ck8d5q2tudp8d" path="res://assets/BG/BG_L2.png" id="2_fvd6y"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+scroll_ignore_camera_zoom = true
+script = ExtResource("1_y4y3k")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(320, 180)
+
+[node name="BgL1" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(159, 90)
+texture = ExtResource("1_ilfs8")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.3, 0.3)
+motion_offset = Vector2(10, 20)
+motion_mirroring = Vector2(260, 150)
+
+[node name="BgL1" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(159, 90)
+texture = ExtResource("2_fvd6y")
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.7, 0.7)
+motion_offset = Vector2(10, 20)
+motion_mirroring = Vector2(320, 180)
+
+[node name="BgL1" type="Sprite2D" parent="ParallaxLayer6"]
+position = Vector2(159, 90)
+texture = ExtResource("2_fvd6y")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.6, 0.6)
+motion_offset = Vector2(10, 20)
+motion_mirroring = Vector2(320, 180)
+
+[node name="BgL1" type="Sprite2D" parent="ParallaxLayer5"]
+position = Vector2(159, 90)
+texture = ExtResource("2_fvd6y")
+
+[node name="ParallaxLayer7" type="ParallaxLayer" parent="."]
+position = Vector2(-18.67, -8.52)
+motion_scale = Vector2(0.5, 0.5)
+motion_offset = Vector2(10, 20)
+motion_mirroring = Vector2(320, 180)
+
+[node name="BgL1" type="Sprite2D" parent="ParallaxLayer7"]
+position = Vector2(159, 90)
+texture = ExtResource("2_fvd6y")
+
+[node name="ParallaxLayer8" type="ParallaxLayer" parent="."]
+position = Vector2(-35.935, 16.61)
+motion_scale = Vector2(0.4, 0.4)
+motion_offset = Vector2(10, 20)
+motion_mirroring = Vector2(320, 180)
+
+[node name="BgL1" type="Sprite2D" parent="ParallaxLayer8"]
+position = Vector2(159, 90)
+texture = ExtResource("2_fvd6y")
+
+[node name="ParallaxLayer9" type="ParallaxLayer" parent="."]
+z_index = 4
+motion_scale = Vector2(0.1, 0.1)
+motion_offset = Vector2(10, 20)
+motion_mirroring = Vector2(320, 180)
+
+[node name="BgL1" type="Sprite2D" parent="ParallaxLayer9"]
+position = Vector2(159, 90)
+texture = ExtResource("2_fvd6y")
+
+[node name="ParallaxLayer10" type="ParallaxLayer" parent="."]
+z_index = 4
+position = Vector2(-127.755, -208.195)
+scale = Vector2(3.71, 3.71)
+motion_scale = Vector2(0.05, 0.05)
+motion_offset = Vector2(10, 20)
+motion_mirroring = Vector2(320, 180)
+
+[node name="BgL1" type="Sprite2D" parent="ParallaxLayer10"]
+position = Vector2(159, 90)
+texture = ExtResource("2_fvd6y")

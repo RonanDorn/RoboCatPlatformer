@@ -19,7 +19,7 @@ pitch_scale = 1.22
 
 [node name="CheckPointUpdate" type="AudioStreamPlayer" parent="AudioPlayers"]
 stream = ExtResource("3_fny3l")
-volume_db = -30.306
+volume_db = -25.621
 pitch_scale = 1.22
 
 [node name="PlayerDead" type="AudioStreamPlayer" parent="AudioPlayers"]
@@ -29,8 +29,8 @@ pitch_scale = 1.22
 
 [node name="CheapPickUp" type="AudioStreamPlayer" parent="AudioPlayers"]
 stream = ExtResource("5_xoxgt")
-volume_db = 6.305
-pitch_scale = 3.06
+volume_db = -14.415
+pitch_scale = 2.89
 
 [node name="MusicPlayers" type="Node" parent="."]
 

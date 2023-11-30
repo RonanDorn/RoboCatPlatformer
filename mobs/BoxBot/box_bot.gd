@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var right_ledge		: RayCast2D			 = $RightLedge
 @onready var left_ledge			: RayCast2D			 = $LeftLedge
 
-var speed		 : int = 1400
+var speed		 : int = 750
 var direction	 : int = 1
 
 func _physics_process(delta):
@@ -25,3 +25,4 @@ func change_direction():
 		anim.flip_h = false
 	elif direction < 0:
 		anim.flip_h = true
+	velocity.x += 600 *direction
