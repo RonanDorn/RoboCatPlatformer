@@ -3,32 +3,33 @@ extends CharacterBody2D
 enum STATE { MOVEMENT, FALL, WALLSLIDE, DEATH }
 var current_state = STATE.MOVEMENT
 
-@onready var coyote_timer		: Timer				 = $Timers/CoyoteTimer
-@onready var jump_buffer		: Timer				 = $Timers/JumpBuffer
-@onready var jump_timer			: Timer				 = $Timers/JumpTimer
-@onready var notification_timer	: Timer				 = $Timers/NotificationTimer
-@onready var anim				: AnimatedSprite2D	 = $AnimatedSprite2D
+@onready var coyote_timer			: Timer				 = $Timers/CoyoteTimer
+@onready var jump_buffer			: Timer				 = $Timers/JumpBuffer
+@onready var jump_timer				: Timer				 = $Timers/JumpTimer
+@onready var notification_timer		: Timer				 = $Timers/NotificationTimer
+@onready var portal_immune_timer	: Timer				 = $Timers/PortalImmuneTimer
+@onready var anim					: AnimatedSprite2D	 = $AnimatedSprite2D
 
-@onready var checkpoint			: Vector2			 = self.position
+@onready var checkpoint				: Vector2			 = self.position
 
-@export var speed					: int		 = 145
-@export var acceleration			: int		 = 285
-@export var friction				: int		 = 750
-@export var jump_impulse			: int		 = -155
-@export var jump_cut_impulse		: int		 = -60
-@export var high_jump_impulse		: int		 = -270
-@export var air_acceleration		: int		 = 250
-@export var air_resistance			: int		 = 450
-@export var terminal_gravity		: int		 = 250
-@export var extra_gravity			: int		 = 50
-@export var slide_speed				: int		 = 400
-@export var slide_acceleration		: int		 = 50
-@export var wall_jump_impulse		: Vector2	 = Vector2(45, -250)
+@export var speed					: int				 = 145
+@export var acceleration			: int				 = 285
+@export var friction				: int				 = 750
+@export var jump_impulse			: int				 = -155
+@export var jump_cut_impulse		: int				 = -60
+@export var high_jump_impulse		: int				 = -270
+@export var air_acceleration		: int				 = 250
+@export var air_resistance			: int				 = 450
+@export var terminal_gravity		: int				 = 250
+@export var extra_gravity			: int				 = 50
+@export var slide_speed				: int				 = 400
+@export var slide_acceleration		: int				 = 50
+@export var wall_jump_impulse		: Vector2			 = Vector2(45, -250)
 
-var gravity						: int			 = 785
+var gravity						: int					 = 785
 var direction					: int
 
-var has_second_jump				: bool		 = true
+var has_second_jump				: bool					 = true
 var is_cut_jump					: bool
 var was_on_floor				: bool
 var is_jumping					: bool
@@ -37,6 +38,7 @@ var is_jumping					: bool
 func _ready():
 	GlobalEvents.enter_in_hit_box.connect(hit_box)
 	GlobalEvents.new_checkpoint.connect(checkpoint_update)
+	GlobalEvents.send_portal_coord.connect(portal_to)
 	
 func _physics_process(delta):
 	direction = Input.get_axis("left", "right")
@@ -206,3 +208,9 @@ func checkpoint_update(checkpoint_position):
 	if checkpoint !=checkpoint_position:
 		checkpoint = checkpoint_position
 		GlobalEvents.show_checkpoint_label.emit()
+
+func portal_to(linked_portal_coordinate):
+	if portal_immune_timer.time_left == 0:
+		print("immune_timer")
+		self.position = linked_portal_coordinate
+		portal_immune_timer.start()

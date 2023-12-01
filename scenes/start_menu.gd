@@ -13,9 +13,12 @@ func _on_quit_button_pressed():
 
 func _on_level_1_pressed():
 	get_tree().change_scene_to_file("res://scenes/levels/1_level.tscn")
-
 func _on_level_2_pressed():
 	get_tree().change_scene_to_file("res://scenes/levels/2_level.tscn")
+func _on_level_3_pressed():
+	get_tree().change_scene_to_file("res://scenes/levels/3_level.tscn")
 
 func _on_level_8_pressed():
 	get_tree().change_scene_to_file("res://scenes/test_level.tscn")
+
+

@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7juf1dtkvrqu"]
+
+[ext_resource type="Texture2D" uid="uid://gb46nb85ivd1" path="res://assets/TileSetV2.0.png" id="1_3h350"]
+
+[sub_resource type="Curve2D" id="Curve2D_1dd5x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3pb5r"]
+size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_l2ed0"]
+resource_name = "new_animation"
+length = 10.0
+loop_mode = 2
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nqqpw"]
+_data = {
+"new_animation": SubResource("Animation_l2ed0")
+}
+
+[node name="MovingPlatform" type="Path2D"]
+curve = SubResource("Curve2D_1dd5x")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+remote_path = NodePath("../../AnimatableBody2D")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+texture = ExtResource("1_3h350")
+region_enabled = true
+region_rect = Rect2(0, 112, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_3pb5r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nqqpw")
+}

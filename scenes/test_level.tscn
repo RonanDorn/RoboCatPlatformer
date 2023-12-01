@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://7ixqj3nwyggd"]
+[gd_scene load_steps=11 format=3 uid="uid://7ixqj3nwyggd"]
 
 [ext_resource type="PackedScene" uid="uid://bpao3528aie2y" path="res://TileMap2.0.tscn" id="1_hfdvg"]
 [ext_resource type="PackedScene" uid="uid://dehqq743o3pip" path="res://parallax_bg.tscn" id="1_oajpw"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cji1bf8jn3rqs" path="res://mobs/BoxBot/box_bot.tscn" id="6_icdrm"]
 [ext_resource type="PackedScene" uid="uid://bvwvreynqv2eu" path="res://objects/level_exit.tscn" id="7_27vx8"]
 [ext_resource type="PackedScene" uid="uid://dmhm64n7ptmfh" path="res://objects/cheap.tscn" id="8_dwlc0"]
+[ext_resource type="PackedScene" uid="uid://m74y6p0yyfdk" path="res://objects/Portal/portal.tscn" id="10_a7tk1"]
 
 [node name="TestLevel" type="Node2D"]
 
@@ -44,3 +45,12 @@ position = Vector2(73, 578)
 [node name="Cheap" parent="." instance=ExtResource("8_dwlc0")]
 position = Vector2(119, 613)
 skill_to_active = "high_jump"
+
+[node name="Portal" parent="." node_paths=PackedStringArray("linked_portal") instance=ExtResource("10_a7tk1")]
+position = Vector2(142, 543)
+linked_portal = NodePath("../Portal2")
+
+[node name="Portal2" parent="." node_paths=PackedStringArray("linked_portal") instance=ExtResource("10_a7tk1")]
+position = Vector2(120, 387)
+rotation = -3.14159
+linked_portal = NodePath("../Portal")

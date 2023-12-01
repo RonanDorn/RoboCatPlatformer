@@ -1,10 +1,14 @@
+res://scenes/levels
+res://objects/Portal
+res://assets
+res://mobs/FlyBot
+res://objects/Platforms
 res://
 res://assets/Hints
 res://objects
 res://mobs/BoxBot
 res://assets/BoxBot
 res://scenes
-res://assets
 res://objects/Thorn
 res://global
 res://objects/coin
