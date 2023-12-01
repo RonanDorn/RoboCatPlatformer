@@ -16,6 +16,7 @@ var current_state = STATE.MOVEMENT
 @export var acceleration			: int				 = 285
 @export var friction				: int				 = 750
 @export var jump_impulse			: int				 = -155
+@export var second_jump_ipulse		: int				 = -250
 @export var jump_cut_impulse		: int				 = -60
 @export var high_jump_impulse		: int				 = -270
 @export var air_acceleration		: int				 = 250
@@ -97,7 +98,7 @@ func fall_state(delta):
 		
 		if Input.is_action_just_pressed("jump") and has_second_jump and GameData.skills.double_jump:
 			anim.play("jump")
-			velocity.y = jump_impulse
+			velocity.y = -250
 			has_second_jump = false
 			
 		elif Input.is_action_just_pressed("jump") and !has_second_jump:

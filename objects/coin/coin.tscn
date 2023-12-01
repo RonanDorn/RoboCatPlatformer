@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cnynuade816p6"]
+[gd_scene load_steps=19 format=3 uid="uid://cnynuade816p6"]
 
 [ext_resource type="Texture2D" uid="uid://sg88xo16r1jh" path="res://assets/Coin16x16.png" id="1_8igf8"]
 [ext_resource type="Script" path="res://objects/coin/coin.gd" id="1_qoaod"]
@@ -91,6 +91,57 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_a18vu"]
 radius = 3.0
 
+[sub_resource type="Animation" id="Animation_4sn6q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_m14at"]
 resource_name = "fade_out"
 length = 0.6
@@ -143,71 +194,11 @@ tracks/3/keys = {
 "values": [Vector2(0, 0), Vector2(0, -10.005)]
 }
 
-[sub_resource type="Animation" id="Animation_4sn6q"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Area2D/CollisionShape2D:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("AnimatedSprite2D:offset")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_58wvc"]
 _data = {
 "RESET": SubResource("Animation_4sn6q"),
 "fade_out": SubResource("Animation_m14at")
 }
-
-[sub_resource type="Gradient" id="Gradient_mvjia"]
-colors = PackedColorArray(0.759285, 0.468468, 0.112805, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ihatc"]
-gradient = SubResource("Gradient_mvjia")
-fill = 1
-fill_from = Vector2(0.509174, 0.472477)
-fill_to = Vector2(0.880734, 0.174312)
 
 [node name="Coin" type="Node2D"]
 script = ExtResource("1_qoaod")
@@ -229,11 +220,5 @@ speed_scale = 1.5
 libraries = {
 "": SubResource("AnimationLibrary_58wvc")
 }
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-color = Color(1, 1, 1, 0.129412)
-energy = 3.5
-texture = SubResource("GradientTexture2D_ihatc")
-texture_scale = 0.5
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

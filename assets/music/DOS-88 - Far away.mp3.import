@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/DOS-88 - Far away.mp3-f7d75268d2b4bcd6c1d80c5
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
