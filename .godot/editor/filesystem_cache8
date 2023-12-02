@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1701449466
+::res://::1701537063
 icon.svg::CompressedTexture2D::667172287506853263::1700990205::1700990214::1::::<><>::
 level_transition.tscn::PackedScene::426754559678757616::1701447661::0::1::::<><>::
 MovementCube.gd::GDScript::-1::1701358330::0::1::::<>StaticBody2D<>::
@@ -7,8 +7,8 @@ parallax_bg.gd::GDScript::-1::1701274189::0::1::::<>ParallaxBackground<>::
 parallax_bg.tscn::PackedScene::7455469841335144283::1701328869::0::1::::<><>::uid://dlm6wvw7cuxbr
 score.gd::GDScript::-1::1701172819::0::1::::<>CanvasLayer<>::
 score.tscn::PackedScene::445037917432513051::1701173003::0::1::::<><>::res://score.gd
-sound_player.gd::GDScript::-1::1701449465::0::1::::<>Node<>::
-sound_player.tscn::PackedScene::3707891344040286268::1701449466::0::1::::<><>::res://sound_player.gd<>uid://nod7vg4bxm0w::::res://assets/sfx/Retro PickUp 18.wav<>uid://dns1fve0kods3::::res://assets/sfx/Retro PowerUP 09.wav<>uid://bxv8yy5sou122::::res://assets/sfx/Retro Negative Short 23.wav<>uid://dttpxbrjcwqpo::::res://assets/music/DOS-88 - Far away.mp3<>uid://bw443uk6nil8s::::res://assets/sfx/Cheap.wav
+sound_player.gd::GDScript::-1::1701449798::0::1::::<>Node<>::
+sound_player.tscn::PackedScene::3707891344040286268::1701449830::0::1::::<><>::res://sound_player.gd<>uid://nod7vg4bxm0w::::res://assets/sfx/Retro PickUp 18.wav<>uid://dns1fve0kods3::::res://assets/sfx/Retro PowerUP 09.wav<>uid://bxv8yy5sou122::::res://assets/sfx/Retro Negative Short 23.wav<>uid://dttpxbrjcwqpo::::res://assets/music/DOS-88 - Far away.mp3<>uid://bw443uk6nil8s::::res://assets/sfx/Cheap.wav
 TileMap2.0.tscn::PackedScene::3440154997301566942::1701268830::0::1::::<><>::uid://gb46nb85ivd1
 ::res://assets/::1701442604
 CheckPoint.png::CompressedTexture2D::3710877445915204174::1701160699::1701160699::1::::<><>::
@@ -35,7 +35,7 @@ Hint_DoubleJump.png::CompressedTexture2D::5312576002610725455::1701442610::17014
 Hint_HighJump.png::CompressedTexture2D::6178055792380850306::1701442610::1701442610::1::::<><>::
 Hint_MobJump.png::CompressedTexture2D::6204007680824550700::1701329332::1701329332::1::::<><>::
 Hint_WallJump.png::CompressedTexture2D::6665485226861613348::1701442610::1701442610::1::::<><>::
-::res://assets/music/::1701173725
+::res://assets/music/::1701449773
 DOS-88 - Far away.mp3::AudioStreamMP3::8533025164877864188::1701173725::1701449773::1::::<><>::
 ::res://assets/sfx/::1701193587
 Cheap.wav::AudioStreamWAV::3992254060958357392::1701193571::1701193587::1::::<><>::
@@ -90,12 +90,13 @@ portal.tscn::PackedScene::910131516195073956::1701428279::0::1::::<><>::uid://bm
 ::res://objects/Thorn/::1701192783
 thorn.tscn::PackedScene::6792543042880930396::1701192783::0::1::::<><>::uid://gftclf3ge5jk
 ::res://resources/::1701108582
-::res://scenes/::1701447661
+::res://scenes/::1701454088
 level.gd::GDScript::-1::1701445495::0::1::::<>Node2D<>::
-start_menu.gd::GDScript::-1::1701444116::0::1::::<>MarginContainer<>::
-start_menu.tscn::PackedScene::6857242622471390669::1701447661::0::1::::<><>::res://scenes/start_menu.gd
-::res://scenes/levels/::1701449466
+start_menu.gd::GDScript::-1::1701452696::0::1::::<>MarginContainer<>::
+start_menu.tscn::PackedScene::6857242622471390669::1701454088::0::1::::<><>::res://scenes/start_menu.gd
+::res://scenes/levels/::1701454078
 1_level.tscn::PackedScene::4357410229817021620::1701447661::0::1::::<><>::res://scenes/level.gd<>uid://i2lb2j7ty8ul::::res://character/player.tscn<>uid://bpao3528aie2y::::res://TileMap2.0.tscn<>uid://cnynuade816p6::::res://objects/coin/coin.tscn<>uid://c31mgrnids1sq::::res://objects/Thorn/thorn.tscn<>uid://deuhpxjufyiw3::::res://objects/check_point.tscn<>uid://bvwvreynqv2eu::::res://objects/level_exit.tscn<>uid://dehqq743o3pip::::res://parallax_bg.tscn<>uid://bokeb8ycy4lcv::::res://assets/Hints/Hint A_D_Spacebar.png
 2_level.tscn::PackedScene::2612866698265434047::1701447661::0::1::::<><>::res://scenes/level.gd<>uid://bpao3528aie2y::::res://TileMap2.0.tscn<>uid://i2lb2j7ty8ul::::res://character/player.tscn<>uid://cji1bf8jn3rqs::::res://mobs/BoxBot/box_bot.tscn<>uid://cnynuade816p6::::res://objects/coin/coin.tscn<>uid://c31mgrnids1sq::::res://objects/Thorn/thorn.tscn<>uid://deuhpxjufyiw3::::res://objects/check_point.tscn<>uid://dmhm64n7ptmfh::::res://objects/cheap.tscn<>uid://dehqq743o3pip::::res://parallax_bg.tscn<>uid://cuaxw81k8n1gw::::res://assets/Hints/Hint_HighJump.png<>uid://bvwvreynqv2eu::::res://objects/level_exit.tscn
 3_level.tscn::PackedScene::5019963158945033174::1701447662::0::1::::<><>::res://scenes/level.gd<>uid://bpao3528aie2y::::res://TileMap2.0.tscn<>uid://i2lb2j7ty8ul::::res://character/player.tscn<>uid://gb46nb85ivd1::::res://assets/TileSetV2.0.png<>uid://cnynuade816p6::::res://objects/coin/coin.tscn<>uid://c31mgrnids1sq::::res://objects/Thorn/thorn.tscn<>uid://cji1bf8jn3rqs::::res://mobs/BoxBot/box_bot.tscn<>uid://m74y6p0yyfdk::::res://objects/Portal/portal.tscn<>uid://deuhpxjufyiw3::::res://objects/check_point.tscn<>uid://dehqq743o3pip::::res://parallax_bg.tscn<>uid://bvwvreynqv2eu::::res://objects/level_exit.tscn
-test_level.tscn::PackedScene::2263983598571306791::1701449466::0::1::::<><>::res://scenes/level.gd<>uid://dehqq743o3pip::::res://parallax_bg.tscn<>uid://bpao3528aie2y::::res://TileMap2.0.tscn<>uid://i2lb2j7ty8ul::::res://character/player.tscn<>uid://cnynuade816p6::::res://objects/coin/coin.tscn<>uid://c31mgrnids1sq::::res://objects/Thorn/thorn.tscn<>uid://deuhpxjufyiw3::::res://objects/check_point.tscn<>uid://cji1bf8jn3rqs::::res://mobs/BoxBot/box_bot.tscn<>uid://bvwvreynqv2eu::::res://objects/level_exit.tscn<>uid://dmhm64n7ptmfh::::res://objects/cheap.tscn<>uid://m74y6p0yyfdk::::res://objects/Portal/portal.tscn<>uid://bdmpn36wqjh1c::::res://mobs/FlyBot/FlyBot_Hit.png<>uid://bk86kbxhlu6di::::res://mobs/FlyBot/FlyBot_Idle.png<>uid://bb2fq71al57wx::::res://objects/hit_box.tscn
+4_level.tscn::PackedScene::5802795879711416342::1701454078::0::1::::<><>::res://scenes/level.gd<>uid://bpao3528aie2y::::res://TileMap2.0.tscn<>uid://dehqq743o3pip::::res://parallax_bg.tscn<>uid://i2lb2j7ty8ul::::res://character/player.tscn<>uid://bdmpn36wqjh1c::::res://mobs/FlyBot/FlyBot_Hit.png<>uid://cnynuade816p6::::res://objects/coin/coin.tscn<>uid://c31mgrnids1sq::::res://objects/Thorn/thorn.tscn<>uid://bk86kbxhlu6di::::res://mobs/FlyBot/FlyBot_Idle.png<>uid://bb2fq71al57wx::::res://objects/hit_box.tscn<>uid://cji1bf8jn3rqs::::res://mobs/BoxBot/box_bot.tscn<>uid://gb46nb85ivd1::::res://assets/TileSetV2.0.png<>uid://m74y6p0yyfdk::::res://objects/Portal/portal.tscn<>uid://dmhm64n7ptmfh::::res://objects/cheap.tscn<>uid://chxpl6jouodl4::::res://assets/Hints/Hint_DoubleJump.png<>uid://deuhpxjufyiw3::::res://objects/check_point.tscn<>uid://bvwvreynqv2eu::::res://objects/level_exit.tscn
+test_level.tscn::PackedScene::2263983598571306791::1701453782::0::1::::<><>::res://scenes/level.gd<>uid://dehqq743o3pip::::res://parallax_bg.tscn<>uid://bpao3528aie2y::::res://TileMap2.0.tscn<>uid://i2lb2j7ty8ul::::res://character/player.tscn<>uid://cnynuade816p6::::res://objects/coin/coin.tscn<>uid://c31mgrnids1sq::::res://objects/Thorn/thorn.tscn<>uid://deuhpxjufyiw3::::res://objects/check_point.tscn<>uid://cji1bf8jn3rqs::::res://mobs/BoxBot/box_bot.tscn<>uid://bvwvreynqv2eu::::res://objects/level_exit.tscn<>uid://dmhm64n7ptmfh::::res://objects/cheap.tscn<>uid://m74y6p0yyfdk::::res://objects/Portal/portal.tscn<>uid://bdmpn36wqjh1c::::res://mobs/FlyBot/FlyBot_Hit.png<>uid://bk86kbxhlu6di::::res://mobs/FlyBot/FlyBot_Idle.png<>uid://bb2fq71al57wx::::res://objects/hit_box.tscn

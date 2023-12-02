@@ -6,9 +6,10 @@ var current_state = STATE.MOVEMENT
 @onready var coyote_timer			: Timer				 = $Timers/CoyoteTimer
 @onready var jump_buffer			: Timer				 = $Timers/JumpBuffer
 @onready var jump_timer				: Timer				 = $Timers/JumpTimer
-@onready var notification_timer		: Timer				 = $Timers/NotificationTimer
 @onready var portal_immune_timer	: Timer				 = $Timers/PortalImmuneTimer
 @onready var anim					: AnimatedSprite2D	 = $AnimatedSprite2D
+@onready var animation_player		:AnimationPlayer	 = $AnimationPlayer
+@onready var notification			:Label				 = $Notification
 
 @onready var checkpoint				: Vector2			 = self.position
 
@@ -25,7 +26,7 @@ var current_state = STATE.MOVEMENT
 @export var extra_gravity			: int				 = 50
 @export var slide_speed				: int				 = 400
 @export var slide_acceleration		: int				 = 50
-@export var wall_jump_impulse		: Vector2			 = Vector2(45, -250)
+@export var wall_jump_impulse		: Vector2			 = Vector2(200, -250)
 
 var gravity						: int					 = 785
 var direction					: int
@@ -40,6 +41,7 @@ func _ready():
 	GlobalEvents.enter_in_hit_box.connect(hit_box)
 	GlobalEvents.new_checkpoint.connect(checkpoint_update)
 	GlobalEvents.send_portal_coord.connect(portal_to)
+	GlobalEvents.active_skill.connect(notification_skill)
 	
 func _physics_process(delta):
 	direction = Input.get_axis("left", "right")
@@ -80,7 +82,7 @@ func movement_state(delta):
 			anim.play("idle")
 			velocity.x = move_toward(velocity.x, 0, friction * delta)
 			
-		want_to_jump(delta)
+		want_to_jump()
 			
 	elif !is_on_floor() and coyote_timer.time_left == 0:
 		current_state = STATE.FALL
@@ -89,7 +91,7 @@ func fall_state(delta):
 	if !is_on_floor():
 		
 		if Input.is_action_just_released("jump") and !is_on_floor() and velocity.y < jump_cut_impulse:
-			cut_jump(delta)
+			cut_jump()
 		
 		if direction != 0:
 			velocity.x = move_toward(velocity.x, speed * direction, air_acceleration * delta)
@@ -128,8 +130,8 @@ func wallslide_state():
 		velocity.x = 0
 		velocity.y = move_toward(0, slide_speed, slide_acceleration)
 		
-		if Input.is_action_just_pressed("jump") and direction == get_wall_normal().x and GameData.wall_jump:
-			velocity.x = wall_jump_impulse.x * direction
+		if Input.is_action_just_pressed("jump") and GameData.skills.wall_jump:
+			velocity.x = wall_jump_impulse.x * get_wall_normal().x
 			velocity.y = wall_jump_impulse.y
 			anim.play("wallJump")
 			current_state = STATE.FALL
@@ -144,29 +146,29 @@ func death_state():
 	self.global_position = checkpoint
 	current_state = STATE.MOVEMENT
 
-func want_to_jump(delta):
+func want_to_jump():
 	
 	if Input.is_action_just_pressed("jump"):
 		if GameData.skills.high_jump and Input.is_action_pressed("s"):
-			high_jump(delta)
+			high_jump()
 		elif Input.is_action_just_pressed("jump"):
-			jump(delta)
+			jump()
 		else :
-			cut_jump(delta)
+			cut_jump()
 	if Input.is_action_just_released("jump"):
-		cut_jump(delta)
+		cut_jump()
 		
-func high_jump(delta):
+func high_jump():
 	anim.play("jump")
 	is_jumping = true
 	velocity.y += high_jump_impulse
 	
-func jump(delta):
+func jump():
 	anim.play("jump")
 	is_jumping = true
 	velocity.y += jump_impulse
 	
-func cut_jump(delta):
+func cut_jump():
 	anim.play("jump")
 	is_cut_jump = true
 	velocity.y = jump_cut_impulse
@@ -209,9 +211,19 @@ func checkpoint_update(checkpoint_position):
 	if checkpoint !=checkpoint_position:
 		checkpoint = checkpoint_position
 		GlobalEvents.show_checkpoint_label.emit()
+		show_notification("CheckPoint")
 
 func portal_to(linked_portal_coordinate):
 	if portal_immune_timer.time_left == 0:
 		print("immune_timer")
 		self.position = linked_portal_coordinate
 		portal_immune_timer.start()
+
+func notification_skill(skill):
+	show_notification(skill)
+
+func show_notification(string):
+	notification.text = "You got a " + string
+	animation_player.play("NotificationOn")
+	await animation_player.animation_finished
+	animation_player.play("RESET")

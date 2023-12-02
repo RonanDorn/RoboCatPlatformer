@@ -1,14 +1,5 @@
-res://mobs/FlyBot/fly_bot.tscn
+res://objects/cheap.tscn
 res://character/player.gd
-res://mobs/BoxBot/box_bot.tscn
-res://objects/coin/coin.tscn
+res://objects/cheap.gd
 res://scenes/levels/test_level.tscn
-res://scenes/start_menu.tscn
-res://level_transition.tscn
-res://scenes/levels/1_level.tscn
-res://scenes/levels/2_level.tscn
-res://scenes/levels/3_level.tscn
-res://sound_player.tscn
-res://sound_player.gd
-res://scenes/levels/4_level.tscn
-res://scenes/start_menu.gd
+res://character/player.tscn
