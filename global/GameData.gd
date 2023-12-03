@@ -10,7 +10,7 @@ var skills : Dictionary = { "high_jump"	 : false,
 
 func _ready():
 	GlobalEvents.coin_picked.connect(score_up)
-	GlobalEvents.enter_in_hit_box.connect(score_down)
+	GlobalEvents.player_dead.connect(score_down)
 	GlobalEvents.active_skill.connect(skill_activated)
 	
 func score_up():

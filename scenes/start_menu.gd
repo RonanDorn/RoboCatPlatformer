@@ -18,9 +18,6 @@ func _on_level_3_pressed():
 func _on_level_4_pressed():
 	pick_level(4)
 
-func _on_level_8_pressed():
-	pick_level("test")
-
 func pick_level(level_name):
 	animation_player.play("FadeIn")
 	await animation_player.animation_finished

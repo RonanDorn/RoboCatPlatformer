@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var anim				: AnimatedSprite2D	 = $AnimatedSprite2D
 @onready var right_ledge		: RayCast2D			 = $RightLedge
 @onready var left_ledge			: RayCast2D			 = $LeftLedge
+@onready var animated_sprite_2d :AnimatedSprite2D	 = $AnimatedSprite2D
 
 var speed		 : int = 750
 var direction	 : int = 1

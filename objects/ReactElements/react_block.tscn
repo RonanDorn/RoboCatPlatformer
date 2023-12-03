@@ -1,0 +1,114 @@
+[gd_scene load_steps=12 format=3 uid="uid://gdr6pxtranxo"]
+
+[ext_resource type="Texture2D" uid="uid://bnr15w5h67fi4" path="res://objects/ReactElements/ReactBlock.png" id="1_k665k"]
+[ext_resource type="Script" path="res://objects/ReactElements/react_block.gd" id="1_pffq3"]
+
+[sub_resource type="Curve2D" id="Curve2D_w64m4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5vjl"]
+atlas = ExtResource("1_k665k")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0hap"]
+atlas = ExtResource("1_k665k")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gn138"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5vjl")
+}],
+"loop": false,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0hap")
+}],
+"loop": false,
+"name": &"on",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3exj1"]
+size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_1x001"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_e1erf"]
+resource_name = "off"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [29.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_hcf2d"]
+resource_name = "on"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 29.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gwtyu"]
+_data = {
+"RESET": SubResource("Animation_1x001"),
+"off": SubResource("Animation_e1erf"),
+"on": SubResource("Animation_hcf2d")
+}
+
+[node name="ReactBlock" type="Path2D"]
+curve = SubResource("Curve2D_w64m4")
+script = ExtResource("1_pffq3")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+remote_path = NodePath("../../Block")
+
+[node name="Block" type="AnimatableBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Block"]
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_gn138")
+animation = &"off"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_3exj1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 2.0
+libraries = {
+"": SubResource("AnimationLibrary_gwtyu")
+}

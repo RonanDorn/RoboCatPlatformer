@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bk86kbxhlu6di" path="res://mobs/FlyBot/FlyBot_Idle.png" id="2_byxol"]
 [ext_resource type="PackedScene" uid="uid://bb2fq71al57wx" path="res://objects/hit_box.tscn" id="3_6vvq6"]
 
-[sub_resource type="Curve2D" id="Curve2D_wjsxd"]
+[sub_resource type="Curve2D" id="Curve2D_3m52w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c8phx"]
 atlas = ExtResource("1_6c01g")
@@ -226,24 +226,24 @@ animations = [{
 size = Vector2(15, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ywuwa"]
-size = Vector2(15, 5)
+size = Vector2(15, 3)
 
 [node name="FlyBot" type="Path2D"]
-curve = SubResource("Curve2D_wjsxd")
+curve = SubResource("Curve2D_3m52w")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotates = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
 remote_path = NodePath("../../Character")
 
-[node name="Character" type="CharacterBody2D" parent="."]
+[node name="Character" type="AnimatableBody2D" parent="."]
 collision_layer = 4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Character"]
 sprite_frames = SubResource("SpriteFrames_0wh4l")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.263966
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Character"]
 position = Vector2(-0.5, -0.5)
@@ -256,6 +256,3 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Character/HitBox"]
 position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_ywuwa")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../Character")

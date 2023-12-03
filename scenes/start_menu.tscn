@@ -106,18 +106,11 @@ text = "Level 6"
 
 [node name="LevelsSelection3" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="Level7" type="Button" parent="CenterContainer/VBoxContainer/LevelsSelection3"]
 layout_mode = 2
 text = "Level 7"
-
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer/LevelsSelection3"]
-layout_mode = 2
-theme_override_constants/margin_left = 66
-
-[node name="Level8" type="Button" parent="CenterContainer/VBoxContainer/LevelsSelection3/MarginContainer"]
-layout_mode = 2
-text = "Level 8"
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -149,5 +142,4 @@ libraries = {
 [connection signal="pressed" from="CenterContainer/VBoxContainer/LevelsSelection/Level2" to="." method="_on_level_2_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/LevelsSelection/Level3" to="." method="_on_level_3_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/LevelsSelection2/Level4" to="." method="_on_level_4_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/LevelsSelection3/MarginContainer/Level8" to="." method="_on_level_8_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/MarginContainer/QuitButton" to="." method="_on_quit_button_pressed"]

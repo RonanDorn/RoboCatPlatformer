@@ -9,7 +9,7 @@ extends Node
 func _ready():
 	GlobalEvents.coin_picked.connect(coin_sound)
 	GlobalEvents.show_checkpoint_label.connect(new_checkpoint_sound)
-	GlobalEvents.enter_in_hit_box.connect(player_dead_sound)
+	GlobalEvents.player_dead.connect(player_dead_sound)
 	GlobalEvents.active_skill.connect(cheap_sound)
 	
 func coin_sound():

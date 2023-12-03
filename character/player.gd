@@ -20,6 +20,7 @@ var current_state = STATE.MOVEMENT
 @export var second_jump_ipulse		: int				 = -250
 @export var jump_cut_impulse		: int				 = -60
 @export var high_jump_impulse		: int				 = -270
+@export var mob_jump_impulse		: int				 = -235
 @export var air_acceleration		: int				 = 250
 @export var air_resistance			: int				 = 450
 @export var terminal_gravity		: int				 = 250
@@ -29,7 +30,7 @@ var current_state = STATE.MOVEMENT
 @export var wall_jump_impulse		: Vector2			 = Vector2(200, -250)
 
 var gravity						: int					 = 785
-var direction					: int
+var direction					: float
 
 var has_second_jump				: bool					 = true
 var is_cut_jump					: bool
@@ -42,6 +43,7 @@ func _ready():
 	GlobalEvents.new_checkpoint.connect(checkpoint_update)
 	GlobalEvents.send_portal_coord.connect(portal_to)
 	GlobalEvents.active_skill.connect(notification_skill)
+	GlobalEvents.jump_recover.connect(jump_recover)
 	
 func _physics_process(delta):
 	direction = Input.get_axis("left", "right")
@@ -102,6 +104,7 @@ func fall_state(delta):
 			anim.play("jump")
 			velocity.y = -250
 			has_second_jump = false
+			GlobalEvents.player_jump.emit()
 			
 		elif Input.is_action_just_pressed("jump") and !has_second_jump:
 			jump_buffer.start()
@@ -134,6 +137,7 @@ func wallslide_state():
 			velocity.x = wall_jump_impulse.x * get_wall_normal().x
 			velocity.y = wall_jump_impulse.y
 			anim.play("wallJump")
+			GlobalEvents.player_jump.emit()
 			current_state = STATE.FALL
 	
 	else:
@@ -162,16 +166,20 @@ func high_jump():
 	anim.play("jump")
 	is_jumping = true
 	velocity.y += high_jump_impulse
+	GlobalEvents.player_jump.emit(1)
 	
 func jump():
 	anim.play("jump")
 	is_jumping = true
 	velocity.y += jump_impulse
+	GlobalEvents.player_jump.emit()
 	
 func cut_jump():
 	anim.play("jump")
 	is_cut_jump = true
 	velocity.y = jump_cut_impulse
+	if is_on_floor():
+		GlobalEvents.player_jump.emit()
 	
 func apply_gravity(delta):
 	gravity_func(gravity, delta)
@@ -206,6 +214,7 @@ func gravity_func(gravity_num, delta):
 func hit_box():
 	if current_state != STATE.DEATH:
 		current_state = STATE.DEATH
+		GlobalEvents.player_dead.emit()
 
 func checkpoint_update(checkpoint_position):
 	if checkpoint !=checkpoint_position:
@@ -227,3 +236,6 @@ func show_notification(string):
 	animation_player.play("NotificationOn")
 	await animation_player.animation_finished
 	animation_player.play("RESET")
+
+func jump_recover():
+	has_second_jump = true
