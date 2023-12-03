@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name BoxBot
 
 @onready var anim				: AnimatedSprite2D	 = $AnimatedSprite2D
 @onready var right_ledge		: RayCast2D			 = $RightLedge
@@ -11,6 +12,11 @@ var direction	 : int = 1
 func _physics_process(delta):
 	if !right_ledge.is_colliding() or !left_ledge.is_colliding() or self.is_on_wall():
 		change_direction()
+		
+	if direction > 0:
+		anim.flip_h = false
+	elif direction < 0:
+		anim.flip_h = true
 	
 	movement(delta)
 	
@@ -22,8 +28,4 @@ func movement(delta):
 
 func change_direction():
 	direction *= -1
-	if direction > 0:
-		anim.flip_h = false
-	elif direction < 0:
-		anim.flip_h = true
 	velocity.x += 600 *direction

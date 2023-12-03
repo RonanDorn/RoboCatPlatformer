@@ -1,6 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://d12ctoay6wcom"]
+[gd_scene load_steps=17 format=3 uid="uid://d12ctoay6wcom"]
 
-[ext_resource type="Script" path="res://mobs/BoxBot/box_bot.gd" id="1_wqsbm"]
+[ext_resource type="Script" path="res://mobs/ThornBot/thorn_bot.gd" id="1_88y6y"]
 [ext_resource type="Texture2D" uid="uid://b8bs6stj0pq55" path="res://mobs/ThornBot/ThornBot.png" id="2_n6kuf"]
 [ext_resource type="Texture2D" uid="uid://c8tbxwogb1rc8" path="res://mobs/ThornBot/ThornBot_Walk.png" id="3_x4t3y"]
 [ext_resource type="PackedScene" uid="uid://bb2fq71al57wx" path="res://objects/hit_box.tscn" id="4_siw0w"]
@@ -80,10 +80,13 @@ size = Vector2(14, 7)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_76uit"]
 size = Vector2(10, 9)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t5mbu"]
+size = Vector2(66, 2)
+
 [node name="ThornBot" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 5
-script = ExtResource("1_wqsbm")
+script = ExtResource("1_88y6y")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sdcqm")
@@ -116,3 +119,24 @@ target_position = Vector2(0, 4)
 light_mask = 0
 position = Vector2(-5, 7)
 target_position = Vector2(0, 4)
+
+[node name="Right" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
+position = Vector2(35, 2)
+shape = SubResource("RectangleShape2D_t5mbu")
+
+[node name="Left" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
+position = Vector2(-35, 2)
+shape = SubResource("RectangleShape2D_t5mbu")
+
+[connection signal="body_entered" from="Right" to="." method="_on_right_body_entered"]
+[connection signal="body_exited" from="Right" to="." method="_on_right_body_exited"]
+[connection signal="body_entered" from="Left" to="." method="_on_left_body_entered"]
+[connection signal="body_exited" from="Left" to="." method="_on_left_body_exited"]

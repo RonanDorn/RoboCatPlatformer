@@ -27,3 +27,5 @@ res://sound_player.gd
 res://mobs/FlyBot/fly_bot.gd
 res://scenes/start_menu.tscn
 res://scenes/start_menu.gd
+res://mobs/ThornBot/thorn_bot.gd
+res://scenes/levels/5_level.tscn
