@@ -129,8 +129,8 @@ animations = [{
 "speed": 16.0
 }]
 
-[sub_resource type="Animation" id="Animation_kwoc6"]
-resource_name = "on"
+[sub_resource type="Animation" id="Animation_skqrh"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -138,10 +138,10 @@ tracks/0/path = NodePath("HitBox/CollisionPolygon2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, false, false]
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_vxmub"]
@@ -159,8 +159,8 @@ tracks/0/keys = {
 "values": [true, true]
 }
 
-[sub_resource type="Animation" id="Animation_skqrh"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_kwoc6"]
+resource_name = "on"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -168,10 +168,10 @@ tracks/0/path = NodePath("HitBox/CollisionPolygon2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [false]
+"values": [true, false, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_edxsx"]
@@ -187,6 +187,7 @@ script = ExtResource("1_8h1h6")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jjybs")
 animation = &"off"
+autoplay = "off"
 
 [node name="HitBox" parent="." instance=ExtResource("3_ua223")]
 collision_layer = 0

@@ -166,7 +166,7 @@ func high_jump():
 	anim.play("jump")
 	is_jumping = true
 	velocity.y += high_jump_impulse
-	GlobalEvents.player_jump.emit(1)
+	GlobalEvents.player_jump.emit()
 	
 func jump():
 	anim.play("jump")

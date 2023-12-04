@@ -144,4 +144,5 @@ libraries = {
 [connection signal="pressed" from="CenterContainer/VBoxContainer/LevelsSelection2/Level4" to="." method="_on_level_4_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/LevelsSelection2/Level5" to="." method="_on_level_5_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/LevelsSelection2/Level6" to="." method="_on_level_6_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/LevelsSelection3/Level7" to="." method="_on_level_7_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/MarginContainer/QuitButton" to="." method="_on_quit_button_pressed"]
