@@ -19,11 +19,15 @@ func _on_level_4_pressed():
 	pick_level(4)
 func _on_level_5_pressed():
 	pick_level(5)
+func _on_level_6_pressed():
+	pick_level(6)
 
 func pick_level(level_name):
 	animation_player.play("FadeIn")
 	await animation_player.animation_finished
 	get_tree().change_scene_to_file("res://scenes/levels/" + str(level_name) + "_level.tscn")
+
+
 
 
 

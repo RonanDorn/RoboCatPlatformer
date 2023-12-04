@@ -180,6 +180,7 @@ frame_progress = 0.478589
 shape = SubResource("RectangleShape2D_l5e7r")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 1.5
 libraries = {
 "": SubResource("AnimationLibrary_8lpod")
 }
