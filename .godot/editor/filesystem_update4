@@ -1,9 +1,6 @@
+res://scenes/start_menu.tscn
 res://character/player.gd
 res://scenes/levels/test_level.tscn
-res://scenes/levels/6_level.tscn
-res://objects/jump_recover.tscn
-res://scenes/start_menu.gd
-res://scenes/start_menu.tscn
-res://scenes/levels/5_level.tscn
+res://objects/level_exit.gd
+res://scenes/levels/4_level.tscn
 res://scenes/levels/7_level.tscn
-res://objects/ReactElements/react_thorn.tscn

@@ -299,6 +299,21 @@ size = Vector2(15, 5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ywuwa"]
 size = Vector2(15, 5)
 
+[sub_resource type="Animation" id="Animation_byswu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PathFollow2D:progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_44rds"]
 resource_name = "new_animation"
 length = 5.0
@@ -316,7 +331,19 @@ tracks/0/keys = {
 "values": [0.0, 577.918]
 }
 
-[sub_resource type="Animation" id="Animation_byswu"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2fdqa"]
+_data = {
+"RESET": SubResource("Animation_byswu"),
+"new_animation": SubResource("Animation_44rds")
+}
+
+[sub_resource type="Curve2D" id="Curve2D_rrtk3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 152, 202, 0, 0, 0, 0, 501, 202)
+}
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_5raff"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -330,18 +357,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_2fdqa"]
-_data = {
-"RESET": SubResource("Animation_byswu"),
-"new_animation": SubResource("Animation_44rds")
-}
-
-[sub_resource type="Curve2D" id="Curve2D_rrtk3"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 152, 202, 0, 0, 0, 0, 501, 202)
-}
-point_count = 2
 
 [sub_resource type="Animation" id="Animation_lpm10"]
 resource_name = "new_animation"
@@ -360,7 +375,19 @@ tracks/0/keys = {
 "values": [0.0, 348.75]
 }
 
-[sub_resource type="Animation" id="Animation_5raff"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ydvqy"]
+_data = {
+"RESET": SubResource("Animation_5raff"),
+"new_animation": SubResource("Animation_lpm10")
+}
+
+[sub_resource type="Curve2D" id="Curve2D_ojsj8"]
+_data = {
+"points": PackedVector2Array(-53.0026, 9.739, 53.0026, -9.739, 397, -120, -24.9094, -17.9797, 24.9094, 17.9797, 443, -118, 14.2339, -22.6619, -14.2339, 22.6619, 383, -81, -24.5348, -3.74577, 24.5348, 3.74577, 405, -44, 3.74577, 29.5916, -3.74577, -29.5916, 468, -50, -30.3407, 42.3272, 30.3407, -42.3272, 397, -120)
+}
+point_count = 6
+
+[sub_resource type="Animation" id="Animation_20tab"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -374,18 +401,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ydvqy"]
-_data = {
-"RESET": SubResource("Animation_5raff"),
-"new_animation": SubResource("Animation_lpm10")
-}
-
-[sub_resource type="Curve2D" id="Curve2D_ojsj8"]
-_data = {
-"points": PackedVector2Array(-53.0026, 9.739, 53.0026, -9.739, 397, -120, -24.9094, -17.9797, 24.9094, 17.9797, 443, -118, 14.2339, -22.6619, -14.2339, 22.6619, 383, -81, -24.5348, -3.74577, 24.5348, 3.74577, 405, -44, 3.74577, 29.5916, -3.74577, -29.5916, 468, -50, -30.3407, 42.3272, 30.3407, -42.3272, 397, -120)
-}
-point_count = 6
 
 [sub_resource type="Animation" id="Animation_qlgeo"]
 resource_name = "new_animation"
@@ -404,7 +419,19 @@ tracks/0/keys = {
 "values": [0.0, 380.787]
 }
 
-[sub_resource type="Animation" id="Animation_20tab"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qpw7g"]
+_data = {
+"RESET": SubResource("Animation_20tab"),
+"new_animation": SubResource("Animation_qlgeo")
+}
+
+[sub_resource type="Curve2D" id="Curve2D_ld60g"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 90, 126, 0, 0, 0, 0, 16, 121, 0, 0, 0, 0, 10, 72, 0, 0, 0, 0, -65, 38, 0, 0, 0, 0, -6, 8, 0, 0, 0, 0, -16, -22, 0, 0, 0, 0, 67, -21, 0, 0, 0, 0, 6, 33, 0, 0, 0, 0, 49, 43, 0, 0, 0, 0, 79, 83, 0, 0, 0, 0, 135, 73, 0, 0, 0, 0, 117, -23, 0, 0, 0, 0, 87, -21, 0, 0, 0, 0, 83, -85, 0, 0, 0, 0, 31, -58, 0, 0, 0, 0, -66, 101, 0, 0, 0, 0, 12, 102, 0, 0, 0, 0, 47, 67, 0, 0, 0, 0, 155, 81, 0, 0, 0, 0, 150, 137, 0, 0, 0, 0, 90, 126)
+}
+point_count = 21
+
+[sub_resource type="Animation" id="Animation_7btbw"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -418,18 +445,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qpw7g"]
-_data = {
-"RESET": SubResource("Animation_20tab"),
-"new_animation": SubResource("Animation_qlgeo")
-}
-
-[sub_resource type="Curve2D" id="Curve2D_ld60g"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 90, 126, 0, 0, 0, 0, 16, 121, 0, 0, 0, 0, 10, 72, 0, 0, 0, 0, -65, 38, 0, 0, 0, 0, -6, 8, 0, 0, 0, 0, -16, -22, 0, 0, 0, 0, 67, -21, 0, 0, 0, 0, 6, 33, 0, 0, 0, 0, 49, 43, 0, 0, 0, 0, 79, 83, 0, 0, 0, 0, 135, 73, 0, 0, 0, 0, 117, -23, 0, 0, 0, 0, 87, -21, 0, 0, 0, 0, 83, -85, 0, 0, 0, 0, 31, -58, 0, 0, 0, 0, -66, 101, 0, 0, 0, 0, 12, 102, 0, 0, 0, 0, 47, 67, 0, 0, 0, 0, 155, 81, 0, 0, 0, 0, 150, 137, 0, 0, 0, 0, 90, 126)
-}
-point_count = 21
 
 [sub_resource type="Animation" id="Animation_hu4m5"]
 resource_name = "new_animation"
@@ -448,21 +463,6 @@ tracks/0/keys = {
 "values": [0.0, 1409.19]
 }
 
-[sub_resource type="Animation" id="Animation_7btbw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../PathFollow2D:progress")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_coh1l"]
 _data = {
 "RESET": SubResource("Animation_7btbw"),
@@ -477,6 +477,21 @@ point_count = 5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3pb5r"]
 size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_vcu4r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_l2ed0"]
 resource_name = "new_animation"
@@ -493,21 +508,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 515.716]
-}
-
-[sub_resource type="Animation" id="Animation_vcu4r"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PathFollow2D:progress")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nqqpw"]
@@ -1441,7 +1441,7 @@ rotates = false
 remote_path = NodePath("../../Character")
 
 [node name="Character" type="CharacterBody2D" parent="Objects/Mobs/FlyBot4"]
-position = Vector2(150.456, 131.889)
+position = Vector2(90, 126)
 collision_layer = 4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Objects/Mobs/FlyBot4/Character"]
@@ -1483,7 +1483,7 @@ rotates = false
 remote_path = NodePath("../../AnimatableBody2D")
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="Objects/Platforms/MovingPlatform"]
-position = Vector2(35, 149.654)
+position = Vector2(-90, 36)
 
 [node name="Sprite2D" type="Sprite2D" parent="Objects/Platforms/MovingPlatform/AnimatableBody2D"]
 texture = ExtResource("11_e5bwn")
@@ -1545,5 +1545,6 @@ frame_progress = 0.611946
 [node name="CheckPoint" parent="Objects" instance=ExtResource("15_h6tpl")]
 position = Vector2(840, 35)
 
-[node name="LevelExit" parent="." instance=ExtResource("16_i4rf3")]
+[node name="LevelExit" parent="." node_paths=PackedStringArray("transition_animation") instance=ExtResource("16_i4rf3")]
 position = Vector2(216, 152)
+transition_animation = NodePath("../LevelTransition/AnimationPlayer")

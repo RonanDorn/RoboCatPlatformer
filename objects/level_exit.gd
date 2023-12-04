@@ -20,4 +20,5 @@ func level_load(next_level_path):
 	get_tree().paused = true
 	transition_animation.play("FadeIn")
 	await transition_animation.animation_finished
+	get_tree().paused == false
 	get_tree().change_scene_to_file(next_level_path)

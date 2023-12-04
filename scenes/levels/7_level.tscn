@@ -301,6 +301,21 @@ size = Vector2(15, 5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ywuwa"]
 size = Vector2(15, 3)
 
+[sub_resource type="Animation" id="Animation_nuy2v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_mcs5b"]
 resource_name = "new_animation"
 length = 10.0
@@ -316,21 +331,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 270.093]
-}
-
-[sub_resource type="Animation" id="Animation_nuy2v"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PathFollow2D:progress")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t3tqh"]
@@ -785,7 +785,7 @@ position = Vector2(88, 41)
 remote_path = NodePath("../../Block")
 
 [node name="Block" type="AnimatableBody2D" parent="Objects/React/ReactBlock"]
-position = Vector2(103.946, 41)
+position = Vector2(88, 41)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Objects/React/ReactBlock/Block"]
 position = Vector2(0, -1)
@@ -814,7 +814,7 @@ rotation = -1.5708
 remote_path = NodePath("../../Block")
 
 [node name="Block" type="AnimatableBody2D" parent="Objects/React/ReactBlock2"]
-position = Vector2(57, -216)
+position = Vector2(57, -168)
 rotation = -1.5708
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Objects/React/ReactBlock2/Block"]
@@ -844,7 +844,7 @@ rotation = -1.5708
 remote_path = NodePath("../../Block")
 
 [node name="Block" type="AnimatableBody2D" parent="Objects/React/ReactBlock3"]
-position = Vector2(73, -216)
+position = Vector2(73, -168)
 rotation = -1.5708
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Objects/React/ReactBlock3/Block"]

@@ -1,3 +1,6 @@
+C:/Users/DEXP/Desktop/MyProjects/RoboCat&MissingCheaps
+C:/Users/DEXP/Desktop
+res://
 res://scenes/levels
 res://assets/Hints
 res://objects
@@ -7,7 +10,6 @@ res://mobs/JumpBot
 res://assets/JumpBot
 res://assets
 res://mobs/FlyBot
-res://
 res://objects/Portal
 res://objects/Platforms
 res://mobs/BoxBot
